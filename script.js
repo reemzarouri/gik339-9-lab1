@@ -1,40 +1,22 @@
-// Fetch required elements
-const checkbox = document.querySelector('input[type="checkbox"]'); // Task 4, Step 1
-const textFields = document.getElementsByClassName('textfield'); // Task 4, Step 2
-const button = document.getElementsByTagName('button')[0]; // Task 4, Step 3
-const divElement = document.getElementById('targetDiv'); // Task 4, Step 4
+// Get the elements
+const checkbox = document.getElementById('divStyle'); // Get the checkbox by its ID
+const colorField = document.getElementById('color'); // Get the "color" input by its ID
+const contentField = document.getElementById('content'); // Get the "content" input by its ID
+const button = document.getElementById('actionButton'); // Get the button by its ID
+const divElement = document.getElementById('targetDiv'); // Get the target div by its ID
 
-// Function to handle input events (from Task 5)
-function handleInputEvent(e) {
-    console.log('Event triggered by:', e.target);
-
-    const inputName = e.target.name;
-
-    if (inputName === 'content') {
-        divElement.innerHTML = e.target.value;
-    }
-}
-
-// Add event listeners to text fields
-for (let textField of textFields) {
-    // Event listener for "input" events (when typing) or "blur" events (when leaving the field)
-    textField.addEventListener('input', handleInputEvent);
-}
-
-// Add event listener to checkbox
-checkbox.addEventListener('change', () => {
-    // Get the input field with name="color" from the collection of text fields
-    let colorInput = [...textFields].find(field => field.name === 'color');
-
-    // Get the value (color) from the color input field
-    const color = colorInput ? colorInput.value : '#ffffff'; // Default to white if no value is provided
-
-    // Set the background color of the div element
-    divElement.style.backgroundColor = color;
+// Handle input events for text fields
+contentField.addEventListener('input', function () {
+    divElement.innerText = contentField.value; // Update div content with input value
 });
 
-// Add event listener to button
-button.addEventListener('click', () => {
-    // Remove the div element
-    divElement.remove();
+// Handle changes in the checkbox
+checkbox.addEventListener('change', function () {
+    const color = colorField.value || '#ffffff'; // Use the color input value or default to white
+    divElement.style.backgroundColor = color; // Change the background color of the div
+});
+
+// Handle button click to remove the div
+button.addEventListener('click', function () {
+    divElement.remove(); // Remove the div element from the page
 });
