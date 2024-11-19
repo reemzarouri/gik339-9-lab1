@@ -1,5 +1,5 @@
 // Get the elements
-const checkbox = document.getElementById('divStyle'); // Get the checkbox by its ID
+const checkbox = document.getElementById('style'); // Get the checkbox by its ID
 const colorField = document.getElementById('color'); // Get the "color" input by its ID
 const contentField = document.getElementById('content'); // Get the "content" input by its ID
 const button = document.getElementById('actionButton'); // Get the button by its ID
